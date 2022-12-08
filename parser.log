@@ -1,0 +1,184 @@
+2022-12-08 14:28:31,594 - __main__ - INFO - text: 5+5
+2022-12-08 14:28:35,979 - __main__ - INFO - text: 13
+DEBUG:root:This message should go to the log file
+INFO:root:So should this
+WARNING:root:And this, too
+DEBUG:root:This message should go to the log file
+INFO:root:So should this
+WARNING:root:And this, too
+DEBUG:root:Current Token: TokenType.PLUS:+
+DEBUG:root:Current Token: TokenType.INTEGER:2
+DEBUG:root:Current Token: TokenType.EOF:None
+DEBUG:root:This message should go to the log file
+INFO:root:So should this
+WARNING:root:And this, too
+DEBUG:root:Current Token: TokenType.MINUS:-
+DEBUG:root:Current Token: TokenType.MINUS:-
+DEBUG:root:This message should go to the log file
+INFO:root:So should this
+WARNING:root:And this, too
+DEBUG:root:Current Token: TokenType.PLUS:+
+DEBUG:root:Current Token: TokenType.INTEGER:5
+DEBUG:root:Current Token: TokenType.EOF:None
+DEBUG:root:This message should go to the log file
+INFO:root:So should this
+WARNING:root:And this, too
+DEBUG:root:Current Token: TokenType.MINUS:-
+DEBUG:root:Current Token: TokenType.MINUS:-
+DEBUG:root:factor() function: TokenType.INTEGER:1 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:factor() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:factor() function: TokenType.INTEGER:4 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:4 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:4 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:1 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:1 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.INTEGER:3 TokenType.INTEGER
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.INTEGER:3 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:3 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:term() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:term() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:eat() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:term() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:eat() function: TokenType.INTEGER:3 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:3 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:term() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EXP:^ TokenType.EXP
+DEBUG:root:term() function: TokenType.EXP:^ TokenType.EXP
+DEBUG:root:eat() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:factor() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.DIV:/ TokenType.DIV
+DEBUG:root:term() function: TokenType.DIV:/ TokenType.DIV
+DEBUG:root:eat() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:factor() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:term() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:----------------------------------------
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:term() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:eat() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:eat() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:eat() function: TokenType.PLUS:+ TokenType.PLUS
+DEBUG:root:eat() function: TokenType.INTEGER:5 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:eat() function: TokenType.MUL:* TokenType.MUL
+DEBUG:root:eat() function: TokenType.INTEGER:2 TokenType.INTEGER
+DEBUG:root:eat() function: TokenType.EOF:None TokenType.EOF
+DEBUG:root:----------------------------------------
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
+DEBUG:root:eat() function: TokenType.MINUS:- TokenType.MINUS
