@@ -37,7 +37,7 @@ class Tokenizer:
     def __init__(self, text):
         self.text = text
         self.pos = 0
-        self.current_char = self.text[self.pos]
+        self.current_char = self.text[self.pos] if len(text) > 0 else None
         self.Tokens = []
 
     def error(self):

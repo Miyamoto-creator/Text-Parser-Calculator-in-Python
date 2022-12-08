@@ -87,6 +87,38 @@ def test_expr9():
     parser = Parser.Parser(tokenizer)
     assert parser.expr() == 5
 
+# test expression with parenthesis and empty spaces
+
+def test_expr10():
+    text = "(5 + 5) * 5 / 5 - 5"
+    tokenizer = Parser.Tokenizer(text)
+    parser = Parser.Parser(tokenizer)
+    assert parser.expr() == 5
+
+# test expression with parenthesis and empty spaces
+
+def test_expr11():
+    text = "(5 + 5) * 5 / 5 - 5"
+    tokenizer = Parser.Tokenizer(text)
+    parser = Parser.Parser(tokenizer)
+    assert parser.expr() == 5
+
+# test empty expression
+
+def test_expr12():
+    text = ""
+    tokenizer = Parser.Tokenizer(text)
+    parser = Parser.Parser(tokenizer)
+    assert parser.expr() == None
+
+# test expression with nothing but operators
+
+def test_expr13():
+    text = "++++"
+    tokenizer = Parser.Tokenizer(text)
+    parser = Parser.Parser(tokenizer)
+    assert parser.expr() == None
+
 
 
 
