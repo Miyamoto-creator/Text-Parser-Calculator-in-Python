@@ -40,10 +40,23 @@ class Tokenizer:
         self.current_char = self.text[self.pos] if len(text) > 0 else None
         self.Tokens = []
 
+    def scanner(self):
+        while True:
+            token = self.getNextToken()
+            self.Tokens.append(token)
+            if token.type == TokenType.EOF:
+                break
+
+            # Edge cases for multiple operators
+            self.opEdgeCases(self.Tokens, token)
+
+        return self.Tokens
+
     def error(self):
         raise Exception('Error parsing input')
 
     def advance(self):
+        # Advance the 'pos' pointer and set the 'current_char' variable
         self.pos += 1
         if self.pos > len(self.text) - 1:
             self.current_char = None
@@ -51,10 +64,12 @@ class Tokenizer:
             self.current_char = self.text[self.pos]
 
     def skipWhiteSpace(self):
+        # Skip whitespace
         while self.current_char is not None and self.current_char.isspace():
             self.advance()
 
     def integer(self):
+        # Return a (multidigit) integer consumed from the input
         result = ''
         while self.current_char is not None and self.current_char.isdigit():
             result += self.current_char
@@ -62,7 +77,8 @@ class Tokenizer:
         return int(result)
 
     def getNextToken(self):
-        while self.current_char is not None:
+        # Lexical analyzer (also known as scanner or tokenizer)
+        while self.current_char is not None: # While there is still input to be consumed
             if self.current_char.isspace():
                 self.skipWhiteSpace()
                 continue
@@ -94,7 +110,13 @@ class Tokenizer:
         return Token(TokenType.EOF, None)
 
     # Defines logic for multiple mathematical operators like minus or plus happening right after each other
-    def opEdgeCases(self, tokens, token):
+    def opEdgeCases(self, tokens, token): # tokens is the list of tokens, token is the current token
+        """
+        Defines logic for multiple mathematical operators like minus or plus happening right after each other
+        :param tokens:
+        :param token:
+        :return:
+        """
         if tokens[-1].type == TokenType.MINUS and tokens[-2].type == TokenType.MINUS:
             tokens.remove(token)
             tokens[-1].type = TokenType.PLUS
@@ -116,20 +138,7 @@ class Tokenizer:
             tokens[-1].type = TokenType.MINUS
             tokens[-1].value = '-'
 
-    def scanner(self):
-        while True:
-            token = self.getNextToken()
-            self.Tokens.append(token)
-            if token.type == TokenType.EOF:
-                break
 
-            # Checks if token list includes two consecutive minus signs
-            # If they do, it removes the first one and changes the second one to a plus sign
-
-            # turn this into its own function
-            self.opEdgeCases(self.Tokens, token)
-
-        return self.Tokens
 
 
 # Test the tokenizer with user input

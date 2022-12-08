@@ -3,17 +3,16 @@
 from Tokenizer import Tokenizer, TokenType
 import logging
 
-# Parser for calculator that receives Tokens list and uses its own scanner to parse the expression
-class Parser:
 
-    # Scanner
+# Parser for text calculator
+class Parser:
     def __init__(self, tokenizer):
         self.tokenizer = tokenizer
         self.current_token = self.tokenizer.getNextToken()
         # self.logger = logging.getLogger('Parser')
         # self.logger.setLevel(logging.DEBUG)
         # self.logger.addHandler(logging.StreamHandler())
-        #self.logger.debug('Parser initialized')
+        # self.logger.debug('Parser initialized')
 
     # Error handling
     def error(self):
@@ -42,10 +41,12 @@ class Parser:
         # Parse the rest of the expression
         while self.current_token.type in (TokenType.PLUS, TokenType.MINUS):
             token = self.current_token
+
             # Token type is PLUS
             if token.type == TokenType.PLUS:
                 self.eat(TokenType.PLUS)
                 result = result + self.term()
+
             # Token type is MINUS
             elif token.type == TokenType.MINUS:
                 self.eat(TokenType.MINUS)
@@ -55,25 +56,25 @@ class Parser:
     # Parse the term
     def term(self):
 
-            # Parse the first factor
-            result = self.factor()
+        # Parse the first factor
+        result = self.factor()
 
-            # Parse the rest of the term
-            while self.current_token.type in (TokenType.EXP, TokenType.MUL, TokenType.DIV):
-                token = self.current_token
-                # Token type is EXP
-                if token.type == TokenType.EXP:
-                    self.eat(TokenType.EXP)
-                    result = result ** self.factor()
-                # Token type is MUL
-                elif token.type == TokenType.MUL:
-                    self.eat(TokenType.MUL)
-                    result = result * self.factor()
-                # Token type is DIV
-                elif token.type == TokenType.DIV:
-                    self.eat(TokenType.DIV)
-                    result = result / self.factor()
-            return result
+        # Parse the rest of the term
+        while self.current_token.type in (TokenType.EXP, TokenType.MUL, TokenType.DIV):
+            token = self.current_token
+            # Token type is EXP
+            if token.type == TokenType.EXP:
+                self.eat(TokenType.EXP)
+                result = result ** self.factor()
+            # Token type is MUL
+            elif token.type == TokenType.MUL:
+                self.eat(TokenType.MUL)
+                result = result * self.factor()
+            # Token type is DIV
+            elif token.type == TokenType.DIV:
+                self.eat(TokenType.DIV)
+                result = result / self.factor()
+        return result
 
     # Parse the factor
     def factor(self):
@@ -109,7 +110,8 @@ class Parser:
         else:
             self.error()
 
-# Test the parser
+
+# Test the parser manually if needed.
 def main():
     while True:
         try:
@@ -122,6 +124,7 @@ def main():
         parser = Parser(tokenizer)
         result = parser.parse()
         print(result)
+
 
 if __name__ == '__main__':
     main()
