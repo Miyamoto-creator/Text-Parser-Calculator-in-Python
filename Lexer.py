@@ -20,7 +20,7 @@ class TokenType(Enum):
 
 @dataclass  # dataclasses is a decorator that allows you to create a class that has a constructor and other methods
 class Token:
-    """Token class is used to store the token type and the value of the token type"""
+    """Token class is used to store both the type of the token and the tokens value"""
     type: TokenType  # type of token
     value: any  # value of token
 
@@ -38,34 +38,43 @@ class Lexer:
         self.Tokens = []
 
     def Scanner(self):
-        # Lexical analyzer (also known as scanner or tokenizer)
+        # The scanner method is responsible for breaking a sentence apart into tokens. One token at a time.
         while self.current_char is not None:  # While there is still input to be consumed
             if self.current_char.isspace():
                 self.skipWhiteSpace()
                 continue
+
             elif self.current_char.isdigit():
                 return Token(TokenType.INTEGER, self.integer())
+
             elif self.current_char == '+':
                 self.advance()
                 return Token(TokenType.PLUS, '+')
+
             elif self.current_char == '-':
                 self.advance()
                 return Token(TokenType.MINUS, '-')
+
             elif self.current_char == '*':
                 self.advance()
                 return Token(TokenType.MUL, '*')
+
             elif self.current_char == '/':
                 self.advance()
                 return Token(TokenType.DIV, '/')
+
             elif self.current_char == '^':
                 self.advance()
                 return Token(TokenType.EXP, '^')
-            if self.current_char == '(':
+
+            elif self.current_char == '(':
                 self.advance()
                 return Token(TokenType.LPAREN, '(')
-            if self.current_char == ')':
+
+            elif self.current_char == ')':
                 self.advance()
                 return Token(TokenType.RPAREN, ')')
+
             self.error()
 
         return Token(TokenType.EOF, None)

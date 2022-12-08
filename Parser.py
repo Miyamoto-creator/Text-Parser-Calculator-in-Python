@@ -24,15 +24,15 @@ class Parser:
         else:
             self.error()
 
-    # Parse the expression
     def parse(self):
+        """Parse the expression and return the result"""
         result = self.expr()
         if self.current_token.type != TokenType.EOF:
             self.error()
         return result
 
-    # Parse the expression
     def expr(self):
+        """Method to make an expression"""
 
         # Parse the first term
         result = self.term()
