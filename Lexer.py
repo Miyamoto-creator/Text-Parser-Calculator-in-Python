@@ -1,13 +1,12 @@
-# Contains TokenType, Token, and Lexer classes for the parser calculator
-
 from dataclasses import dataclass
-
-# Token types auto() is a function that automatically assigns a value to each token type
-
 from enum import Enum, auto
 
 
+# Contains TokenType, Token, and Lexer classes for the parser calculator
+
+
 class TokenType(Enum):
+    """auto() is a function that automatically assigns a value to each token type"""
     INTEGER = auto()
     PLUS = auto()
     MINUS = auto()
@@ -19,21 +18,19 @@ class TokenType(Enum):
     EOF = auto()
 
 
-# Token class is used to store the token type and the value of the token type
-# dataclass
-
-@dataclass
+@dataclass  # dataclasses is a decorator that allows you to create a class that has a constructor and other methods
 class Token:
-    type: TokenType
-    value: any
+    """Token class is used to store the token type and the value of the token type"""
+    type: TokenType  # type of token
+    value: any  # value of token
 
     def __repr__(self):
+        """Returns the token type and the value of the token type"""
         return f'{self.type}:{self.value}'
 
 
-# Lexer Class that uses the Token Class and includes the method Tokenizer() that returns a list of tokens
-
 class Lexer:
+    """Lexer Class that uses the Token Class and includes the method Tokenizer() that returns a list of tokens"""
     def __init__(self, text):
         self.text = text
         self.pos = 0
@@ -46,21 +43,21 @@ class Lexer:
             if self.current_char.isspace():
                 self.skipWhiteSpace()
                 continue
-            if self.current_char.isdigit():
+            elif self.current_char.isdigit():
                 return Token(TokenType.INTEGER, self.integer())
-            if self.current_char == '+':
+            elif self.current_char == '+':
                 self.advance()
                 return Token(TokenType.PLUS, '+')
-            if self.current_char == '-':
+            elif self.current_char == '-':
                 self.advance()
                 return Token(TokenType.MINUS, '-')
-            if self.current_char == '*':
+            elif self.current_char == '*':
                 self.advance()
                 return Token(TokenType.MUL, '*')
-            if self.current_char == '/':
+            elif self.current_char == '/':
                 self.advance()
                 return Token(TokenType.DIV, '/')
-            if self.current_char == '^':
+            elif self.current_char == '^':
                 self.advance()
                 return Token(TokenType.EXP, '^')
             if self.current_char == '(':
