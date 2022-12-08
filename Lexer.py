@@ -1,4 +1,4 @@
-# Contains TokenType, Token, and Tokenizer classes for the parser calculator
+# Contains TokenType, Token, and Lexer classes for the parser calculator
 
 from dataclasses import dataclass
 
@@ -31,54 +31,18 @@ class Token:
         return f'{self.type}:{self.value}'
 
 
-# Tokenizer Class that uses the Token Class and includes the method scanner() that returns a list of tokens
+# Lexer Class that uses the Token Class and includes the method Tokenizer() that returns a list of tokens
 
-class Tokenizer:
+class Lexer:
     def __init__(self, text):
         self.text = text
         self.pos = 0
         self.current_char = self.text[self.pos] if len(text) > 0 else None
         self.Tokens = []
 
-    def scanner(self):
-        while True:
-            token = self.getNextToken()
-            self.Tokens.append(token)
-            if token.type == TokenType.EOF:
-                break
-
-            # Edge cases for multiple operators
-            self.opEdgeCases(self.Tokens, token)
-
-        return self.Tokens
-
-    def error(self):
-        raise Exception('Error parsing input')
-
-    def advance(self):
-        # Advance the 'pos' pointer and set the 'current_char' variable
-        self.pos += 1
-        if self.pos > len(self.text) - 1:
-            self.current_char = None
-        else:
-            self.current_char = self.text[self.pos]
-
-    def skipWhiteSpace(self):
-        # Skip whitespace
-        while self.current_char is not None and self.current_char.isspace():
-            self.advance()
-
-    def integer(self):
-        # Return a (multidigit) integer consumed from the input
-        result = ''
-        while self.current_char is not None and self.current_char.isdigit():
-            result += self.current_char
-            self.advance()
-        return int(result)
-
-    def getNextToken(self):
+    def Scanner(self):
         # Lexical analyzer (also known as scanner or tokenizer)
-        while self.current_char is not None: # While there is still input to be consumed
+        while self.current_char is not None:  # While there is still input to be consumed
             if self.current_char.isspace():
                 self.skipWhiteSpace()
                 continue
@@ -109,36 +73,73 @@ class Tokenizer:
 
         return Token(TokenType.EOF, None)
 
+    def advance(self):
+        # Advance the 'pos' pointer and set the 'current_char' variable
+        self.pos += 1
+        if self.pos > len(self.text) - 1:
+            self.current_char = None
+        else:
+            self.current_char = self.text[self.pos]
+
+    def Tokenizer(self):
+        # Tokenizer method that returns a list of tokens
+        while True:
+            token = self.Scanner()
+            self.Tokens.append(token)
+            if token.type == TokenType.EOF:
+                break
+
+            # Edge cases for multiple operators
+            self.opEdgeCases(self.Tokens, token)
+
+        return self.Tokens
+
+    def error(self):
+        raise Exception('Error parsing input')
+
+    def skipWhiteSpace(self):
+        # Skip whitespace
+        while self.current_char is not None and self.current_char.isspace():
+            self.advance()
+
+    def integer(self):
+        # Return a (multidigit) integer consumed from the input
+        result = ''
+        while self.current_char is not None and self.current_char.isdigit():
+            result += self.current_char
+            self.advance()
+        return int(result)
+
     # Defines logic for multiple mathematical operators like minus or plus happening right after each other
-    def opEdgeCases(self, tokens, token): # tokens is the list of tokens, token is the current token
+    @staticmethod
+    def opEdgeCases(tokens, token):  # tokens is the list of tokens, token is the current token
         """
         Defines logic for multiple mathematical operators like minus or plus happening right after each other
         :param tokens:
         :param token:
         :return:
         """
+        # double minus equals plus
         if tokens[-1].type == TokenType.MINUS and tokens[-2].type == TokenType.MINUS:
             tokens.remove(token)
             tokens[-1].type = TokenType.PLUS
             tokens[-1].value = '+'
 
-        # plus plus turns into plus
+        # double plus equals just one plus
         elif tokens[-1].type == TokenType.PLUS and tokens[-2].type == TokenType.PLUS:
             tokens.remove(token)
 
-        # plus minus turns into minus
+        # minus plus equals minus
         elif tokens[-1].type == TokenType.MINUS and tokens[-2].type == TokenType.PLUS:
             tokens.remove(token)
             tokens[-1].type = TokenType.MINUS
             tokens[-1].value = '-'
 
-        # minus plus turns into minus
+        # minus plus equals minus
         elif tokens[-1].type == TokenType.PLUS and tokens[-2].type == TokenType.MINUS:
             tokens.remove(token)
             tokens[-1].type = TokenType.MINUS
             tokens[-1].value = '-'
-
-
 
 
 # Test the tokenizer with user input
@@ -150,8 +151,8 @@ def main():
             break
         if not text:
             continue
-        tokenizer = Tokenizer(text)
-        tokens = tokenizer.scanner()
+        tokenizer = Lexer(text)
+        tokens = tokenizer.Tokenizer()
         print(tokens)
 
 

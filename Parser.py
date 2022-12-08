@@ -1,14 +1,13 @@
 # Python 3
 
-from Tokenizer import Tokenizer, TokenType
-import logging
+from Lexer import Lexer, TokenType
 
 
 # Parser for text calculator
 class Parser:
     def __init__(self, tokenizer):
         self.tokenizer = tokenizer
-        self.current_token = self.tokenizer.getNextToken()
+        self.current_token = self.tokenizer.Scanner()
         # self.logger = logging.getLogger('Parser')
         # self.logger.setLevel(logging.DEBUG)
         # self.logger.addHandler(logging.StreamHandler())
@@ -21,7 +20,7 @@ class Parser:
     # Eat the current token and move to the next token
     def eat(self, token_type):
         if self.current_token.type == token_type:
-            self.current_token = self.tokenizer.getNextToken()
+            self.current_token = self.tokenizer.Scanner()
         else:
             self.error()
 
@@ -120,7 +119,7 @@ def main():
             break
         if not text:
             continue
-        tokenizer = Tokenizer(text)
+        tokenizer = Lexer(text)
         parser = Parser(tokenizer)
         result = parser.parse()
         print(result)
