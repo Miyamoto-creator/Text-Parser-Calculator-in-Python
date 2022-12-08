@@ -126,4 +126,5 @@ def main():
 
 
 if __name__ == '__main__':
+    """Run the main function if the file is run directly"""
     main()

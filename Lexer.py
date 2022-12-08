@@ -148,7 +148,7 @@ class Lexer:
             tokens[-1].value = '-'
 
 
-# Test the tokenizer with user input
+# Test the tokenizer with user input manually if needed.
 def main():
     while True:
         try:
@@ -163,4 +163,5 @@ def main():
 
 
 if __name__ == '__main__':
+    """If the file is run directly, run the main function"""
     main()
