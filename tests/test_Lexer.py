@@ -106,3 +106,13 @@ def test_lexer_whitespace3():
 
 # test other methods
 
+def test_lexer_peek():
+    text = "34"
+    lexer = Lexer(text)
+    assert lexer.peek() == 4
+
+def test_lexer_peek2():
+    text = "354"
+    lexer = Lexer(text)
+    assert lexer.peek() == 5
+

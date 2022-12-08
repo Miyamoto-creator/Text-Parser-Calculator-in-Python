@@ -44,8 +44,6 @@ class Lexer:
                 self.skipWhiteSpace()
                 continue
 
-            # float or int scanner
-            # checks for . both before and after the number
             if self.current_char.isdigit():
                 if self.peek() == '.':
                     return Token(TokenType.FLOAT, self.float())
@@ -129,8 +127,9 @@ class Lexer:
             self.advance()
         return int(result)
 
-    # float that includes . before and after the number and returns a float
+
     def float(self):
+        # Return a float consumed from the input
         result = ''
         while self.current_char is not None and self.current_char.isdigit() or self.current_char == '.':
             result += self.current_char
@@ -146,6 +145,7 @@ class Lexer:
         :param token:
         :return:
         """
+
         # double minus equals plus
         if tokens[-1].type == TokenType.MINUS and tokens[-2].type == TokenType.MINUS:
             tokens.remove(token)
