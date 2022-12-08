@@ -109,10 +109,17 @@ def test_lexer_whitespace3():
 def test_lexer_peek():
     text = "34"
     lexer = Lexer(text)
-    assert lexer.peek() == 4
+    assert lexer.peek() == '4'
 
 def test_lexer_peek2():
     text = "354"
     lexer = Lexer(text)
-    assert lexer.peek() == 5
+    assert lexer.peek() == '5'
+
+def test_lexer_peek3():
+    text = "3544"
+    lexer = Lexer(text)
+    lexer.advance()
+    lexer.advance()
+    assert lexer.peek() == '4'
 
