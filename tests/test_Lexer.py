@@ -61,6 +61,31 @@ def test_lexer_integer7():
     lexer = Lexer(text)
     assert lexer.integer() == 3333333
 
+# test float
+def test_lexer_float():
+    text = "3.3"
+    lexer = Lexer(text)
+    assert lexer.float() == 3.3
+
+def test_lexer_float2():
+    text = "3.33"
+    lexer = Lexer(text)
+    assert lexer.float() == 3.33
+
+def test_lexer_float3():
+    text = "3.333"
+    lexer = Lexer(text)
+    assert lexer.float() == 3.333
+
+def test_lexer_float4():
+    text = "3.3333"
+    lexer = Lexer(text)
+    assert lexer.float() == 3.3333
+
+def test_lexer_float5():
+    text = "3.33333"
+    lexer = Lexer(text)
+    assert lexer.float() == 3.33333
 
 # test other shit
 

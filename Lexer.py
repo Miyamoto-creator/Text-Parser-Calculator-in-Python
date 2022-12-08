@@ -8,6 +8,7 @@ from enum import Enum, auto
 class TokenType(Enum):
     """auto() is a function that automatically assigns a value to each token type"""
     INTEGER = auto()
+    FLOAT  = auto()
     PLUS = auto()
     MINUS = auto()
     MUL = auto()
@@ -36,7 +37,6 @@ class Lexer:
         self.pos = 0
         self.current_char = self.text[self.pos] if len(text) > 0 else None
         self.Tokens = []
-
     def Scanner(self):
         # The scanner method is responsible for breaking a sentence apart into tokens. One token at a time.
         while self.current_char is not None:  # While there is still input to be consumed
@@ -44,8 +44,13 @@ class Lexer:
                 self.skipWhiteSpace()
                 continue
 
-            elif self.current_char.isdigit():
-                return Token(TokenType.INTEGER, self.integer())
+            # float or int scanner
+            # checks for . both before and after the number
+            if self.current_char.isdigit():
+                if self.peek() == '.':
+                    return Token(TokenType.FLOAT, self.float())
+                else:
+                    return Token(TokenType.INTEGER, self.integer())
 
             elif self.current_char == '+':
                 self.advance()
@@ -78,6 +83,14 @@ class Lexer:
             self.error()
 
         return Token(TokenType.EOF, None)
+
+    # get next future token
+    def peek(self):
+        peek_pos = self.pos + 1
+        if peek_pos > len(self.text) - 1:
+            return None
+        else:
+            return self.text[peek_pos]
 
     def advance(self):
         # Advance the 'pos' pointer and set the 'current_char' variable
@@ -115,6 +128,14 @@ class Lexer:
             result += self.current_char
             self.advance()
         return int(result)
+
+    # float that includes . before and after the number and returns a float
+    def float(self):
+        result = ''
+        while self.current_char is not None and self.current_char.isdigit() or self.current_char == '.':
+            result += self.current_char
+            self.advance()
+        return float(result)
 
     # Defines logic for multiple mathematical operators like minus or plus happening right after each other
     @staticmethod
